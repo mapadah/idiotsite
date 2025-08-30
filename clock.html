@@ -22,28 +22,28 @@
     .wrap {
       /* Simple vertical centering compatible with old Safari */
       position: absolute; top: 50%; left: 0; right: 0;
-      margin-top: -120px; /* half of container height */
+      margin-top: -180px; /* half of container height */
       padding: 0 16px;
     }
     h1 {
       font-weight: 600;
-      font-size: 80px; /* big, readable */
-      letter-spacing: 2px;
-      margin: 0 0 12px 0;
+      font-size: 140px; /* much bigger clock */
+      letter-spacing: 4px;
+      margin: 0 0 20px 0;
     }
     #seconds {
       opacity: 0.85;
       font-weight: 400;
     }
-    #ampm { font-size: 28px; opacity: 0.9; margin-left: 6px; }
-    .controls { margin-top: 18px; }
+    #ampm { font-size: 50px; opacity: 0.9; margin-left: 10px; }
+    .controls { margin-top: 24px; }
     button {
       background: #111; color: #fff; border: 1px solid #333;
-      padding: 10px 14px; border-radius: 10px; font-size: 16px;
+      padding: 14px 20px; border-radius: 12px; font-size: 20px;
       -webkit-tap-highlight-color: rgba(255,255,255,0.2);
     }
     button:active { background: #1a1a1a; }
-    .sub { color: #aaa; font-size: 14px; margin-top: 10px; }
+    .sub { color: #aaa; font-size: 16px; margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -54,7 +54,7 @@
     </h1>
     <div class="controls">
       <button id="toggle">Switch to 24‑hour</button>
-      <div class="sub">Adds nicely to the Home Screen on iPad (iOS 5).</n></div>
+      <div class="sub">Adds nicely to the Home Screen on iPad (iOS 5).</div>
     </div>
   </div>
 
