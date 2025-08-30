@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Clock</title>
+  <!-- iOS 5 friendly meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-title" content="Clock" />
+  <style>
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: #000;
+      color: #fff;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      -webkit-text-size-adjust: 100%; /* iOS text zoom control */
+      text-align: center;
+    }
+    .wrap {
+      /* Simple vertical centering compatible with old Safari */
+      position: absolute; top: 50%; left: 0; right: 0;
+      margin-top: -120px; /* half of container height */
+      padding: 0 16px;
+    }
+    h1 {
+      font-weight: 600;
+      font-size: 80px; /* big, readable */
+      letter-spacing: 2px;
+      margin: 0 0 12px 0;
+    }
+    #seconds {
+      opacity: 0.85;
+      font-weight: 400;
+    }
+    #ampm { font-size: 28px; opacity: 0.9; margin-left: 6px; }
+    .controls { margin-top: 18px; }
+    button {
+      background: #111; color: #fff; border: 1px solid #333;
+      padding: 10px 14px; border-radius: 10px; font-size: 16px;
+      -webkit-tap-highlight-color: rgba(255,255,255,0.2);
+    }
+    button:active { background: #1a1a1a; }
+    .sub { color: #aaa; font-size: 14px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>
+      <span id="hours">00</span><span>:</span><span id="minutes">00</span><span>:</span><span id="seconds">00</span>
+      <span id="ampm"></span>
+    </h1>
+    <div class="controls">
+      <button id="toggle">Switch to 24‑hour</button>
+      <div class="sub">Adds nicely to the Home Screen on iPad (iOS 5).</n></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+  (function () {
+    // Avoid ES6 for iOS 5 compatibility
+    var hoursEl = document.getElementById('hours');
+    var minutesEl = document.getElementById('minutes');
+    var secondsEl = document.getElementById('seconds');
+    var ampmEl = document.getElementById('ampm');
+    var toggleBtn = document.getElementById('toggle');
+
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+    // Persist format preference if available
+    var is12 = true;
+    try {
+      if (window.localStorage) {
+        var saved = localStorage.getItem('clock_is12');
+        if (saved === 'true' || saved === 'false') { is12 = (saved === 'true'); }
+      }
+    } catch (e) { /* ignore */ }
+
+    function applyToggleLabel() {
+      toggleBtn.innerHTML = is12 ? 'Switch to 24‑hour' : 'Switch to 12‑hour';
+    }
+
+    function render() {
+      var now = new Date();
+      var h = now.getHours();
+      var m = now.getMinutes();
+      var s = now.getSeconds();
+
+      if (is12) {
+        var displayH = h % 12; if (displayH === 0) displayH = 12;
+        hoursEl.innerHTML = pad(displayH);
+        ampmEl.innerHTML = (h >= 12 ? 'PM' : 'AM');
+      } else {
+        hoursEl.innerHTML = pad(h);
+        ampmEl.innerHTML = '';
+      }
+      minutesEl.innerHTML = pad(m);
+      secondsEl.innerHTML = pad(s);
+    }
+
+    function tick() {
+      render();
+    }
+
+    toggleBtn.onclick = function () {
+      is12 = !is12;
+      try { if (window.localStorage) localStorage.setItem('clock_is12', String(is12)); } catch (e) {}
+      applyToggleLabel();
+      render();
+    };
+
+    applyToggleLabel();
+    render();
+    // Update every 250ms so the change happens promptly on the second
+    setInterval(tick, 250);
+  })();
+  </script>
+</body>
+</html>
