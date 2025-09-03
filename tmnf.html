@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TrackMania Nations — Fan Revival (2008‑style)</title>
+  <meta name="description" content="A faithful, 2008‑era website style for TrackMania Nations / Nations Forever. Fan remake for trackmanianations.net" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%231e5aa5'/%3E%3Cpath d='M2 11h12v2H2zM2 3h12v2H2zM2 7h12v2H2z' fill='%23fff'/%3E%3C/svg%3E" />
+  <style>
+    /* --- Reset (2008-ish simple) --- */
+    html, body, div, span, applet, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    a, abbr, acronym, address, big, cite, code,
+    del, dfn, em, img, ins, kbd, q, s, samp,
+    small, strike, strong, sub, sup, tt, var,
+    b, u, i, center,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, embed, 
+    figure, figcaption, footer, header, hgroup, 
+    menu, nav, output, ruby, section, summary,
+    time, mark, audio, video { margin: 0; padding: 0; border: 0; font: inherit; vertical-align: baseline; }
+    body { line-height: 1; }
+    ol, ul { list-style: none; }
+    table { border-collapse: collapse; border-spacing: 0; }
+
+    /* --- Base --- */
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0a0f16 url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"%3E%3Crect width="32" height="32" fill="%230a0f16"/%3E%3Cpath d="M0 16h32M16 0v32" stroke="%230e1824" stroke-width="1" opacity="0.35"/%3E%3C/svg%3E') repeat;
+      color: #ddd;
+    }
+    a { color: #ffb347; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrap { width: 970px; margin: 0 auto; }
+
+    /* --- Top ribbon bar --- */
+    .topbar { background:#10161f; border-bottom:1px solid #223245; font-size:12px; color:#9fb6cf; }
+    .topbar .wrap { display:flex; justify-content: space-between; align-items:center; padding:6px 0; }
+    .topbar .links a { margin-left:14px; color:#9fb6cf; }
+
+    /* --- Header --- */
+    header {
+      background: linear-gradient(#0b3a6e, #102b4f);
+      border-bottom: 3px solid #0a63c1;
+      box-shadow: inset 0 -1px 0 rgba(255,255,255,.08);
+    }
+    .brand { display:flex; align-items:center; padding: 18px 0; }
+    .logo {
+      width: 64px; height: 64px; border-radius: 12px; margin-right: 14px;
+      background: radial-gradient(circle at 30% 30%, #5fb1ff, #1e5aa5);
+      position: relative; box-shadow: 0 2px 6px rgba(0,0,0,.5);
+    }
+    .logo:before, .logo:after { content:""; position:absolute; left:10%; right:10%; height:6px; background:#fff; border-radius:3px; }
+    .logo:before { top:20px; }
+    .logo:after { bottom:20px; }
+    .brand h1 { color:#fff; font-size:28px; letter-spacing:.5px; text-shadow: 0 1px 0 rgba(0,0,0,.5); }
+    .brand .tagline { color:#b7d7ff; font-size:12px; margin-top:2px; }
+
+    /* --- Navigation (pill tabs, 2008-style) --- */
+    nav { margin-top: 10px; }
+    .nav { display:flex; gap:8px; flex-wrap:wrap; }
+    .nav a {
+      display:inline-block; padding:10px 14px; font-weight:bold; font-size:13px; letter-spacing:.2px; color:#fff;
+      background: linear-gradient(#1b6bd4, #0d4c9a);
+      border:1px solid #0a3f80; border-radius:18px; text-shadow:0 1px 0 rgba(0,0,0,.35);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.35);
+    }
+    .nav a:hover { background: linear-gradient(#2380ff, #0f56ad); }
+    .nav a.active { background: linear-gradient(#ffb347, #ff7a00); border-color:#d56400; }
+
+    /* --- Hero --- */
+    .hero { margin:16px 0; background: #0d1b2a url('https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/11020/header.jpg?t=1548090419') center/cover no-repeat; height:220px; border:1px solid #0b2035; box-shadow: 0 2px 6px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.05); border-radius:10px; position:relative; }
+    .hero .cta {
+      position:absolute; bottom:14px; right:14px; display:flex; gap:10px;
+    }
+    .btn {
+      display:inline-block; padding:10px 16px; font-weight:bold; border-radius:6px; border:1px solid rgba(0,0,0,.35);
+      background: linear-gradient(#ffd28a, #ff8a00);
+      color:#1a1a1a; text-shadow: 0 1px 0 rgba(255,255,255,.4);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 2px 3px rgba(0,0,0,.4);
+    }
+    .btn.secondary { background: linear-gradient(#9fd0ff, #1e73d1); color:#07203b; }
+
+    /* --- Main columns --- */
+    .columns { display:grid; grid-template-columns: 650px 300px; gap:20px; }
+
+    /* News list */
+    .news { background:#111a25; border:1px solid #0b2035; border-radius:10px; box-shadow: 0 2px 6px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.05); }
+    .news h2 { font-size:16px; font-weight:bold; color:#fff; padding:12px 14px; border-bottom:1px solid #0b2035; background:linear-gradient(#14263c,#0e1c2e); border-top-left-radius:10px; border-top-right-radius:10px; }
+    .article { padding:14px; border-top:1px solid rgba(255,255,255,.03); }
+    .article:first-child { border-top:none; }
+    .article h3 { font-size:15px; color:#ffb347; margin-bottom:6px; }
+    .meta { font-size:11px; color:#8fb0d1; margin-bottom:8px; }
+    .article p { font-size:13px; color:#d6e6ff; line-height:1.5; }
+
+    /* Sidebar */
+    .sidebar .panel { background:#101826; border:1px solid #0b2035; border-radius:10px; margin-bottom:16px; box-shadow: 0 2px 6px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.05); }
+    .panel h4 { font-size:14px; font-weight:bold; color:#fff; padding:10px 12px; border-bottom:1px solid #0b2035; background:linear-gradient(#13243a,#0d1c2c); border-top-left-radius:10px; border-top-right-radius:10px; }
+    .panel .content { padding:12px; font-size:13px; color:#d6e6ff; }
+    .panel .download-btn { display:block; text-align:center; padding:10px; margin-top:6px; background:linear-gradient(#5cffaa,#18a85f); color:#092616; font-weight:bold; border-radius:6px; border:1px solid rgba(0,0,0,.35); text-shadow:0 1px 0 rgba(255,255,255,.4); }
+
+    /* Footer */
+    footer { margin:24px 0 40px; color:#9fb6cf; font-size:12px; text-align:center; }
+    footer .links a { color:#9fb6cf; margin: 0 10px; }
+    .legal { margin-top:6px; font-size:11px; color:#6b86a6; }
+
+    /* Small helper styles */
+    .label { display:inline-block; font-size:11px; padding:2px 6px; border-radius:3px; background:#0a63c1; color:#fff; text-transform:uppercase; letter-spacing:.4px; }
+    .sep { height:1px; background:rgba(255,255,255,.05); margin:10px 0; }
+
+    /* Responsive (light touch) */
+    @media (max-width: 1024px) {
+      .wrap { width: 95%; }
+      .columns { grid-template-columns: 1fr; }
+      .hero { height: 180px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <div>Welcome to <strong>trackmanianations.net</strong> • fan revival</div>
+      <div class="links">
+
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="wrap">
+      <div class="brand">
+        
+        <div>
+          <h1>TrackMania Nations</h1>
+          <div class="tagline">Fast‑paced arcade racing • Official fan revival • Circa 2008 style</div>
+        </div>
+      </div>
+
+      <nav>
+     <!--   <div class="nav">
+          <a class="active" href="#">Home</a>
+          <a href="#download">Download</a>
+          <a href="#news">News</a>
+          <a href="#media">Media</a>
+          <a href="#community">Community</a>
+          <a href="#servers">Servers</a>
+          <a href="#support">Support</a> -->
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="hero">
+      <div class="cta">
+        <a class="btn" href="https://nadeo-download.cdn.ubi.com/trackmaniaforever/tmnationsforever_setup.exe">Free Download</a>
+        <a class="btn secondary" href="https://www.youtube.com/watch?v=OkX_m7hTczI" target="_blank">Watch Trailer</a>
+      </div>
+    </div>
+
+    <div class="columns">
+      <!-- LEFT: NEWS / CONTENT -->
+      <section class="news" id="news">
+        <h2>Latest News</h2>
+		<article class="article">
+          <h3>Site Release!</h3>
+          <div class="meta">September 3, 2025 • by Nico • <span class="label">Site Update</span></div>
+          <p>
+            Hello! This new site <a href="https://trackmanianations.net" target="_blank">trackmanianations.net</a> was made by me, Nico! The reason I made this site is because the trackmania nations site is registered but leads to nothing. So I decided to put matter into my own hands and make my own website.
+          </p>
+        </article>
+
+
+        <article class="article">
+          <h3>TrackMania Nations Forever — available now!</h3>
+          <div class="meta">April 16, 2008 • by Nadeo • <span class="label">Announcement</span></div>
+          <p>
+            The Stadium environment returns with a <em>Forever</em> update and 65 brand‑new tracks. Jump into solo or join millions online to race, build and share.
+          </p>
+        </article>
+
+        <article class="article">
+          <h3>United Forever compatibility & ladder changes</h3>
+          <div class="meta">April 15, 2008 • by Nadeo</div>
+          <p>
+            Nations Forever and United Forever players can race together on the same Stadium servers. Official ladders, enhanced server browser and improved matchmaking are included.
+          </p>
+        </article>
+
+        <article class="article">
+          <h3>Community Spotlight — TM Carpark & TMX</h3>
+          <div class="meta">October 2, 2008 • Community</div>
+          <p>
+            Discover custom cars, skins and tracks made by the community. Browse the car park and exchange to find your next ride and challenge.
+          </p>
+        </article>
+      </section>
+
+      <!-- RIGHT: SIDEBAR -->
+      <aside class="sidebar">
+        <div class="panel" id="download">
+          <h4>Download (Free)</h4>
+          <div class="content">
+            <p>Get the <strong>TrackMania Nations Forever</strong> installer.</p>
+            <a class="download-btn" href="https://nadeo-download.cdn.ubi.com/trackmaniaforever/tmnationsforever_setup.exe">Download for Windows (Free)</a>
+            <div class="sep"></div>
+            <p><strong>System Requirements</strong></p>
+            <ul>
+              <li>Windows 2000/XP/XP-x64/Vista</li>
+              <li>Pentium IV 1.6GHz • 256 MB RAM</li>
+              <li>DirectX 9 GPU</li>
+			  <li>750 MB free disk space</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h4>Quick Links</h4>
+          <div class="content">
+            <ul>
+              <li><a href="https://tmnf.exchange/" target="_blank">TMNF Exchange</a></li>
+              <li><a href="https://nations.tm-exchange.com/forumsshow" target="_blank">Forums</a></li>
+              <li><a href="https://drive.google.com/drive/folders/1kYNB12EDUvxT4Abbwuj6DtCSl58LKrsV?usp=sharing" target="_blank">Screenshots & Videos</a></li>
+              <li><a href="#support">Support & FAQ</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h4>Featured Video</h4>
+          <div class="content">
+            <div style="position:relative; padding-top:56.25%; border-radius:8px; overflow:hidden; background:#000;">
+              <iframe title="Trailer" src="https://www.youtube.com/embed/uF0G0X3O-hM" allowfullscreen style="position:absolute; inset:0; width:100%; height:100%; border:0;"></iframe>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+      <div class="legal">
+        © 2006–2025 Nadeo & respective owners. This is a non‑commercial fan remake for <strong>trackmanianations.net</strong> recreating the look & feel of the 2008 era.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // (Optional) Very small script to highlight current nav tab based on hash
+    (function(){
+      function setActive(){
+        var h = location.hash || '#';
+        document.querySelectorAll('.nav a').forEach(function(a){
+          a.classList.toggle('active', a.getAttribute('href') === h);
+        });
+      }
+      window.addEventListener('hashchange', setActive);
+      setActive();
+    })();
+  </script>
+</body>
+</html>
